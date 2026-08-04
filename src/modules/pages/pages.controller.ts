@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch } from '@nestjs/common';
 import { PagesService } from './pages.service';
 import { UpdatePageDto } from './dto/update-page.dto';
 import { Public } from '../../common/decorators/public.decorator';
@@ -32,5 +32,15 @@ export class PagesController {
     @CurrentUser('email') email: string,
   ) {
     return this.pagesService.updatePage(slug, dto, email);
+  }
+
+  /**
+   * Admins can delete a page record by id.
+   */
+  @ApiBearerAuth('access-token')
+  @Delete(':id')
+  @Roles(Role.ADMIN)
+  deletePage(@Param('id', ParseIntPipe) id: number) {
+    return this.pagesService.deletePage(id);
   }
 }

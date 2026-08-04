@@ -36,4 +36,18 @@ export class PagesService {
       update: updateData,
     });
   }
+
+  async deletePage(id: number) {
+    const page = await this.prisma.page.findUnique({
+      where: { id },
+    });
+
+    if (!page) {
+      throw new NotFoundException(`Page with id "${id}" was not found`);
+    }
+
+    return this.prisma.page.delete({
+      where: { id },
+    });
+  }
 }
