@@ -33,7 +33,7 @@ async function bootstrap() {
       // class-transformer's implicit conversion recursively tries to coerce
       // array elements into the array's own reflected type when no explicit
       // element type is declared (as with our loosely-typed JSONB DTO fields
-      // like UpdateHomeDto.roadmap: any[]), which silently turns arrays of
+      // like UpdatePageDto.roadmap: any[]), which silently turns arrays of
       // objects into arrays of empty arrays. Not needed for JSON bodies.
     }),
   );

@@ -6,7 +6,7 @@ import configuration from './config/configuration';
 import { PrismaService } from './config/prisma.service';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
-import { HomeModule } from './modules/home/home.module';
+import { PagesModule } from './modules/pages/pages.module';
 import { ContactModule } from './modules/contact/contact.module';
 import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
 import { RolesGuard } from './common/guards/roles.guard';
@@ -36,7 +36,7 @@ import { AppController } from './app.controller';
 
     AuthModule,
     UsersModule,
-    HomeModule,
+    PagesModule,
     ContactModule,
   ],
   controllers: [AppController],

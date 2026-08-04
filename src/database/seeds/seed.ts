@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv';
 import * as bcrypt from 'bcrypt';
 import * as fs from 'fs';
 import * as path from 'path';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, type Prisma } from '@prisma/client';
 import { Role } from '../../common/enums/role.enum';
 
 dotenv.config();
@@ -17,7 +17,24 @@ function readJson<T = any>(fileName: string): T {
   return JSON.parse(raw);
 }
 
-async function seedHomePage() {
+async function seedPage(slug: string, content: Prisma.InputJsonValue) {
+  const page = await prisma.page.upsert({
+    where: { slug },
+    create: {
+      slug,
+      content,
+      updatedByEmail: 'seed-script',
+    },
+    update: {
+      content,
+      updatedByEmail: 'seed-script',
+    },
+  });
+
+  return page;
+}
+
+async function seedPages() {
   const site = readJson('site.json');
   const heroSection = readJson('heroSection.json');
   const heroDashboard = readJson('heroDashboard.json');
@@ -30,38 +47,30 @@ async function seedHomePage() {
   const portfolio = readJson('portfolio.json');
   const sectorPlaybooks = readJson('sectorPlaybooks.json');
 
-  let home = await prisma.homePage.findUnique({
-    where: { id: SINGLETON_ID },
-  });
+  const homeContent: Prisma.InputJsonObject = {
+    site,
+    heroSection,
+    heroDashboard,
+    chartData,
+    navigation,
+    services,
+    capabilities,
+    methodology,
+    roadmap,
+    portfolio,
+    sectorPlaybooks,
+  };
 
-  if (!home) {
-    home = await prisma.homePage.create({
-      data: { id: SINGLETON_ID },
+  await seedPage('home', homeContent);
+
+  if (site?.contactPage) {
+    await seedPage('contact', {
+      contactPage: site.contactPage,
     });
   }
 
-  await prisma.homePage.update({
-    where: { id: SINGLETON_ID },
-    data: {
-      site,
-      heroSection,
-      heroDashboard,
-      chartData,
-      navigation,
-      services,
-      capabilities,
-      methodology,
-      roadmap,
-      portfolio,
-      sectorPlaybooks,
-      updatedByEmail: 'seed-script',
-    },
-  });
-
-  console.log('✅ Home page content seeded from /database/seeds/data/*.json');
+  console.log('✅ Page content seeded from /database/seeds/data/*.json');
 }
-
-const SINGLETON_ID = 1;
 
 async function seedAdmin() {
   const email = (process.env.SEED_ADMIN_EMAIL || 'admin@business-dev.com').toLowerCase();
@@ -95,7 +104,7 @@ async function run() {
   console.log('📡 Connected to Postgres for seeding...');
 
   try {
-    await seedHomePage();
+    await seedPages();
     await seedAdmin();
     console.log('🎉 Seeding complete.');
   } catch (error) {
