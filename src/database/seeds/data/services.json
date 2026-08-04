@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "title": "Growth Strategy & Market Expansion",
+    "desc": "Architecting data-backed enterprise expansion roadmaps to conquer new verticals and multiply market share.",
+    "icon": "TrendingUp",
+    "badge": "High Impact",
+    "features": ["TAM/SAM Analysis", "Go-To-Market Execution", "Cross-Border Scaling"]
+  },
+  {
+    "id": "2",
+    "title": "Digital Transformation & Automation",
+    "desc": "Modernizing legacy operational channels with automated digital workflows and streamlined AI pipelines.",
+    "icon": "Zap",
+    "badge": "Automation",
+    "features": ["Workflow Optimization", "ERP/CRM Integration", "Process Automation"]
+  },
+  {
+    "id": "3",
+    "title": "Market Intelligence & Analysis",
+    "desc": "Rigorous competitive intelligence and risk benchmarking to eliminate guesswork in capital allocation.",
+    "icon": "Target",
+    "badge": "Data Analytics",
+    "features": ["Competitor Benchmarking", "Demand Forecasting", "Pricing Elasticity"]
+  },
+  {
+    "id": "4",
+    "title": "Operations Restructuring",
+    "desc": "Optimizing overhead structures and governance frameworks to drive profit margin expansion.",
+    "icon": "Award",
+    "badge": "Efficiency",
+    "features": ["Supply Chain Audit", "Cost Structure Revamp", "Governance Frameworks"]
+  },
+  {
+    "id": "5",
+    "title": "M&A & Valuation Readiness",
+    "desc": "Preparing enterprise operations and financials for strategic acquisitions, mergers, or institutional capital rounds.",
+    "icon": "Building2",
+    "badge": "Capital Advisory",
+    "features": ["Due Diligence Prep", "EBITDA Expansion", "Exit Strategy Planning"]
+  },
+  {
+    "id": "6",
+    "title": "Sales Pipeline Acceleration",
+    "desc": "Transforming sales teams with automated lead scoring, CRM alignment, and high-velocity conversion playbooks.",
+    "icon": "BarChart3",
+    "badge": "Revenue Acceleration",
+    "features": ["Pipeline Automation", "Sales Playbooks", "Account-Based Growth"]
+  }
+]

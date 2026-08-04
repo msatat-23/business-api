@@ -1,0 +1,4 @@
+[
+  { "label": "Overview", "href": "/", "mobileIconColor": "iconRose" },
+  { "label": "Contact", "href": "/contact", "mobileIconColor": "iconSky" }
+]

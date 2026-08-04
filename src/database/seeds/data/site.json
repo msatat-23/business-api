@@ -1,0 +1,512 @@
+{
+  "site": {
+    "name": "Business Developer",
+    "nameHighlight": "DEVELOPER",
+    "tagline": "ENTERPRISE PLATFORM",
+    "description": "Enterprise growth platform delivering data-backed strategies, executive expansion frameworks, and modern market intelligence for high-scale organizations.",
+    "copyright": "Business Developer Inc.",
+    "builtWith": "Built with Next.js App Router & Tailwind CSS"
+  },
+  "metadata": {
+    "home": {
+      "title": "Business Developer | Enterprise Growth Platform",
+      "description": "Enterprise growth platform delivering data-backed strategies, executive expansion frameworks, and modern market intelligence for high-scale organizations."
+    },
+    "contact": {
+      "title": "Contact | Business Developer",
+      "description": "Schedule an executive discovery call with our principal strategists to evaluate scale opportunities and refine your unit economics."
+    }
+  },
+  "navigation": [
+    { "label": "Overview", "href": "/", "mobileIconColor": "iconRose" },
+    { "label": "Contact", "href": "/contact", "mobileIconColor": "iconSky" }
+  ],
+  "header": {
+    "cta": "Book Consultation"
+  },
+  "contactInfo": {
+    "email": "advisory@business-dev.com",
+    "phone": "+1 (800) 555-DEV-EXEC",
+    "address": "Global HQ: 500 Enterprise Way, Suite 800, New York, NY 10001"
+  },
+  "footer": {
+    "scheduleAdvisoryCta": "Schedule Advisory Call",
+    "newsletter": {
+      "title": "Enterprise Newsletter",
+      "description": "Join 15,000+ C-Suite leaders receiving our bi-weekly market playbooks and growth benchmarks.",
+      "placeholder": "Enter corporate email",
+      "submitLabel": "Subscribe to Playbooks",
+      "successMessage": "Thank you for subscribing!"
+    }
+  },
+  "hero": {
+    "badge": "ENTERPRISE BUSINESS DEVELOPMENT PLATFORM",
+    "headline": "Architecting",
+    "headlineHighlight": "High-Growth",
+    "headlineSuffix": "Business Strategies",
+    "description": "We partner with ambitious executives and high-growth companies to unlock new market share, optimize operational margins, and automate revenue execution.",
+    "primaryCta": "Schedule Strategic Audit",
+    "secondaryCta": "Explore Core Offerings",
+    "trustBadges": [
+      { "icon": "ShieldCheck", "text": "SOC2 Certified Strategy" },
+      { "icon": "CheckCircle2", "text": "98.4% Client Retention SLA" },
+      { "icon": "Award", "text": "ISO 9001 Compliant" }
+    ]
+  },
+  "heroDashboard": {
+    "aiBadge": "AI Revenue Predictor Active",
+    "title": "Enterprise Growth Analytics — Business Developer",
+    "kpis": {
+      "revenue": { "label": "Annual Revenue Velocity" },
+      "ebitda": { "label": "EBITDA Margin Boost", "value": "34.2%", "trend": "+6.8% YoY" },
+      "pipeline": { "label": "Pipeline Efficiency", "value": "94.1%", "trend": "Optimal" }
+    },
+    "chartTitle": "12-Month Projected vs Actual Growth Line",
+    "chartAxisLabels": ["Q1 Baseline", "Q2 Ramp", "Q3 Multiplier", "Q4 Peak", "Q5 Horizon"],
+    "integrationStatus": "Real-time C-Suite Integration Active",
+    "targetRoi": "2.45x"
+  },
+  "chart": {
+    "quarters": ["Q1", "Q2", "Q3", "Q4", "Q5"],
+    "data": {
+      "Q1": { "val": "$3.2M", "trend": "+8.2%", "pointX": 40, "pointY": 110, "label": "Q1 Launch Baseline" },
+      "Q2": { "val": "$5.8M", "trend": "+14.1%", "pointX": 130, "pointY": 90, "label": "Q2 Channel Expansion" },
+      "Q3": { "val": "$8.5M", "trend": "+21.0%", "pointX": 220, "pointY": 65, "label": "Q3 Operational Scaling" },
+      "Q4": { "val": "$11.9M", "trend": "+24.5%", "pointX": 310, "pointY": 40, "label": "Q4 Milestone Expansion" },
+      "Q5": { "val": "$14.8M", "trend": "+280% Target", "pointX": 400, "pointY": 15, "label": "Q5 Projected Horizon" }
+    }
+  },
+  "stats": [
+    { "number": "$45M+", "label": "Generated Value Created", "sub": "Across global enterprise portfolio" },
+    { "number": "250+", "label": "Enterprise Projects", "sub": "Delivered on time and on budget" },
+    { "number": "98.4%", "label": "Client SLA Retention", "sub": "Audited annually by independent partners" },
+    { "number": "15+", "label": "Years Industry Mastery", "sub": "Trusted by Fortune 500 leadership" },
+    { "number": "3.8x", "label": "Average Revenue Multiple", "sub": "Sustained over 3-year performance window" },
+    { "number": "40+", "label": "Global Markets Covered", "sub": "Across Americas, EMEA, and APAC" }
+  ],
+  "services": {
+    "section": {
+      "badge": "EXPERT SOLUTIONS",
+      "title": "Core Offerings by",
+      "titleHighlight": "Business Developer",
+      "description": "End-to-end strategic services engineered to accelerate enterprise growth, optimize capital efficiency, and drive sustainable market dominance."
+    },
+    "items": [
+      {
+        "id": "1",
+        "title": "Growth Strategy & Market Expansion",
+        "desc": "Architecting data-backed enterprise expansion roadmaps to conquer new verticals and multiply market share.",
+        "icon": "TrendingUp",
+        "badge": "High Impact",
+        "features": ["TAM/SAM Analysis", "Go-To-Market Execution", "Cross-Border Scaling"]
+      },
+      {
+        "id": "2",
+        "title": "Digital Transformation & Automation",
+        "desc": "Modernizing legacy operational channels with automated digital workflows and streamlined AI pipelines.",
+        "icon": "Zap",
+        "badge": "Automation",
+        "features": ["Workflow Optimization", "ERP/CRM Integration", "Process Automation"]
+      },
+      {
+        "id": "3",
+        "title": "Market Intelligence & Analysis",
+        "desc": "Rigorous competitive intelligence and risk benchmarking to eliminate guesswork in capital allocation.",
+        "icon": "Target",
+        "badge": "Data Analytics",
+        "features": ["Competitor Benchmarking", "Demand Forecasting", "Pricing Elasticity"]
+      },
+      {
+        "id": "4",
+        "title": "Operations Restructuring",
+        "desc": "Optimizing overhead structures and governance frameworks to drive profit margin expansion.",
+        "icon": "Award",
+        "badge": "Efficiency",
+        "features": ["Supply Chain Audit", "Cost Structure Revamp", "Governance Frameworks"]
+      },
+      {
+        "id": "5",
+        "title": "M&A & Valuation Readiness",
+        "desc": "Preparing enterprise operations and financials for strategic acquisitions, mergers, or institutional capital rounds.",
+        "icon": "Building2",
+        "badge": "Capital Advisory",
+        "features": ["Due Diligence Prep", "EBITDA Expansion", "Exit Strategy Planning"]
+      },
+      {
+        "id": "6",
+        "title": "Sales Pipeline Acceleration",
+        "desc": "Transforming sales teams with automated lead scoring, CRM alignment, and high-velocity conversion playbooks.",
+        "icon": "BarChart3",
+        "badge": "Revenue Acceleration",
+        "features": ["Pipeline Automation", "Sales Playbooks", "Account-Based Growth"]
+      }
+    ]
+  },
+  "portfolio": {
+    "section": {
+      "badge": "PROVEN TRACK RECORD",
+      "title": "Enterprise Case Studies by",
+      "titleHighlight": "Business Developer",
+      "description": "Real transformation stories from industry leaders scaling revenue, geographic reach, and market share.",
+      "verifiedLabel": "Verified Enterprise Study",
+      "requestDeckCta": "Request Full Case Study Deck"
+    },
+    "items": [
+      {
+        "id": "p1",
+        "title": "Global Supply Chain & Logistics Expansion",
+        "category": "Enterprise Scaling",
+        "growth": "+280% Revenue Surge",
+        "description": "Overhauled regional distribution networks, integrated automated predictive routing, and optimized vendor contracts across 14 trade channels.",
+        "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85",
+        "client": "LogiGlobal Enterprise",
+        "timeline": "12 Month Rollout"
+      },
+      {
+        "id": "p2",
+        "title": "Multi-City Retail Chain Expansion",
+        "category": "Geographic Scale",
+        "growth": "45 New Regional Hubs",
+        "description": "Executed feasibility modeling and location optimization strategies, expanding retail footprint across 6 major economic corridors seamlessly.",
+        "image": "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=1200&q=85",
+        "client": "Apex Retail Group",
+        "timeline": "18 Month Expansion"
+      },
+      {
+        "id": "p3",
+        "title": "Fintech Platform Operations Modernization",
+        "category": "Digital Innovation",
+        "growth": "3.5M Active Users Scaled",
+        "description": "Revamped user journeys and regulatory compliance positioning, unlocking institutional funding and rapid market adoption.",
+        "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=85",
+        "client": "PayPulse Technologies",
+        "timeline": "9 Month Modernization"
+      }
+    ]
+  },
+  "sectorPlaybooks": {
+    "section": {
+      "badge": "SECTOR FOCUS BLUEPRINTS",
+      "title": "Industry Sector",
+      "titleHighlight": "Growth Playbooks",
+      "description": "Interactive slider showcasing specialized market entry, capital scaling, and operational playbooks tailored to core enterprise sectors.",
+      "pillarsLabel": "Core Playbook Pillars:",
+      "benchmarkLabel": "Key Benchmark Output",
+      "requestBlueprintCta": "Request {sector} Blueprint"
+    },
+    "autoplayIntervalMs": 6000,
+    "items": [
+      {
+        "id": "sec-1",
+        "sector": "Fintech & Financial Capital",
+        "badge": "Capital Acceleration",
+        "title": "Automated Treasury & Cross-Border Liquidity Scaling",
+        "metric": "$120M+ Capital Orchestrated",
+        "impact": "3.2x Valuation Expansion in 12 Months",
+        "description": "Engineering resilient fintech infrastructure, cross-border payment gateways, and regulatory compliance frameworks to unlock rapid institutional capital rounds.",
+        "pillars": [
+          "Automated Risk & Liquidity Modeling",
+          "Cross-Border Regulatory Compliance Frameworks",
+          "API-First Core Banking Integrations"
+        ],
+        "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=85",
+        "iconName": "Landmark",
+        "accentColor": "#fb7185"
+      },
+      {
+        "id": "sec-2",
+        "sector": "Global Logistics & Supply Chain",
+        "badge": "Operational Velocity",
+        "title": "Predictive Freight Routing & Multi-Node Optimization",
+        "metric": "42% Latency Cut Across 14 Channels",
+        "impact": "$14.2M Annual Logistics Cost Reduced",
+        "description": "Transforming global distribution networks with automated route dispatching, real-time inventory visibility, and supplier risk hedging systems.",
+        "pillars": [
+          "AI-Powered Predictive Route Dispatching",
+          "Multi-Node Inventory Balancing Systems",
+          "Supplier Hedging & SLA Enforcement Protocol"
+        ],
+        "image": "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=85",
+        "iconName": "Truck",
+        "accentColor": "#c084fc"
+      },
+      {
+        "id": "sec-3",
+        "sector": "Enterprise AI & Cloud SaaS",
+        "badge": "Digital Scale",
+        "title": "High-Velocity SaaS Go-To-Market & ARR Pipeline Engine",
+        "metric": "99.98% Workflow Automation SLA",
+        "impact": "+210% ARR Net Retention Multiplier",
+        "description": "Structuring scalable subscription pricing models, automated lead scoring pipelines, and enterprise sales execution playbooks for high-growth tech.",
+        "pillars": [
+          "Automated Account-Based Lead Scoring",
+          "Usage-Based Pricing Elasticity Models",
+          "C-Suite Executive Sales Enablement Playbooks"
+        ],
+        "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=85",
+        "iconName": "Cpu",
+        "accentColor": "#38bdf8"
+      },
+      {
+        "id": "sec-4",
+        "sector": "Healthcare & MedTech Commercialization",
+        "badge": "Regulatory Mastery",
+        "title": "Clinical Commercialization & Provider Adoption Scaling",
+        "metric": "85 Regional Health Networks Expanded",
+        "impact": "100% HIPAA & Regulatory Audit Clearance",
+        "description": "Navigating complex clinical trial commercialization, hospital network procurement alignment, and scalable telemedicine infrastructure.",
+        "pillars": [
+          "Hospital Enterprise Procurement Alignment",
+          "HIPAA & FDA Regulatory Clearance Systems",
+          "Telemedicine Service Delivery Optimization"
+        ],
+        "image": "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200&q=85",
+        "iconName": "Stethoscope",
+        "accentColor": "#34d399"
+      },
+      {
+        "id": "sec-5",
+        "sector": "Omnichannel Retail & E-Commerce",
+        "badge": "Direct-to-Consumer Growth",
+        "title": "Multi-Store Location & Customer LTV Optimization",
+        "metric": "4.8x LTV / CAC Unit Economics Multiplier",
+        "impact": "45 New Storefront Hubs Scaled Seamlessly",
+        "description": "Unifying online store analytics with physical storefront expansions using location intelligence and automated customer retention loops.",
+        "pillars": [
+          "Location Feasibility & Demographics Modeling",
+          "Unified Cross-Channel Inventory Sync",
+          "Automated Customer Retention Loops"
+        ],
+        "image": "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=1200&q=85",
+        "iconName": "ShoppingBag",
+        "accentColor": "#f59e0b"
+      }
+    ]
+  },
+  "capabilities": {
+    "section": {
+      "badge": "EXECUTIVE ADVANTAGE",
+      "title": "Enterprise Growth",
+      "titleHighlight": "Capabilities",
+      "benchmarkLabel": "Core Benchmark",
+      "consultationCta": "Schedule Strategic Consultation"
+    },
+    "autoplayIntervalMs": 6000,
+    "items": [
+      {
+        "id": "1",
+        "badge": "EXPANSION ENGINE",
+        "title": "Cross-Border Market Acceleration",
+        "description": "De-risk international scaling with automated multi-jurisdictional compliance models, local trade channels, and strategic distributor alignment.",
+        "metric": "14 Months",
+        "metricLabel": "Average Global Launch Velocity",
+        "keyHighlights": [
+          "Multi-Currency Financial Architecture",
+          "Local Regulatory Approval Roadmaps",
+          "Tier-1 Regional Vendor Network Access"
+        ],
+        "image": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=85"
+      },
+      {
+        "id": "2",
+        "badge": "FINANCIAL INTELLIGENCE",
+        "title": "Predictive Revenue & EBITDA Modeling",
+        "description": "Deploy advanced unit economic stress tests and capital efficiency matrices to identify hidden revenue leaks and maximize valuation multiples.",
+        "metric": "3.8x",
+        "metricLabel": "Average Enterprise Valuation Expansion",
+        "keyHighlights": [
+          "3-Year Capital Allocation Projection",
+          "Dynamic Pricing Elasticity Benchmarks",
+          "Real-Time Margin Optimization Dashboard"
+        ],
+        "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85"
+      },
+      {
+        "id": "3",
+        "badge": "M&A EXECUTION",
+        "title": "Strategic Mergers & Asset Acquisition",
+        "description": "Comprehensive buy-side and sell-side transaction advisory, valuation auditing, and seamless post-merger operational integration.",
+        "metric": "$140M+",
+        "metricLabel": "Capital Synergies Realized",
+        "keyHighlights": [
+          "Commercial & Operational Due Diligence",
+          "Synergy Capture & Integration Timelines",
+          "Board & Shareholder Alignment Protocols"
+        ],
+        "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85"
+      },
+      {
+        "id": "4",
+        "badge": "GOVERNANCE & SCALE",
+        "title": "Enterprise Risk & Governance Frameworks",
+        "description": "Establish robust C-Suite oversight, operational SLA guarantees, and risk mitigation protocols designed for institutional investment standards.",
+        "metric": "99.4%",
+        "metricLabel": "SLA Audit Guarantee Compliance",
+        "keyHighlights": [
+          "Board-Level Performance Analytics",
+          "Institutional Risk Mitigation Controls",
+          "Executive Leadership Succession Models"
+        ],
+        "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=85"
+      }
+    ]
+  },
+  "methodology": {
+    "section": {
+      "badge": "OUR APPROACH",
+      "title": "The Business Developer Methodology",
+      "description": "We replace static, slow advisory with dynamic execution systems engineered for measurable enterprise value."
+    },
+    "tabs": [
+      {
+        "id": "execution",
+        "label": "Data-Driven Execution",
+        "title": "Continuous Market Feedback Loops",
+        "desc": "Every strategic milestone is validated against real customer acquisition data and unit economic performance. No static slide decks — only actionable revenue systems.",
+        "checklist": [
+          "Real-time KPI tracking and dashboard reporting",
+          "Rapid iteration on conversion channels",
+          "Unit economic profitability from Month 1"
+        ],
+        "iconName": "PieChart",
+        "iconColorClass": "iconPurpleLarge",
+        "visualLabel": "100% Quantifiable Growth Targets"
+      },
+      {
+        "id": "risk",
+        "label": "Risk Mitigation",
+        "title": "Comprehensive Capital & Operational Hedging",
+        "desc": "We stress-test expansion scenarios against macroeconomic shifts, regulatory roadblocks, and competitive counter-moves to protect enterprise equity.",
+        "checklist": [
+          "Scenario modeling for 3 growth horizons",
+          "Regulatory & compliance risk audit",
+          "Capital allocation downside protection"
+        ],
+        "iconName": "ShieldCheck",
+        "iconColorClass": "iconEmeraldLarge",
+        "visualLabel": "Institutional-Grade Risk Management"
+      },
+      {
+        "id": "automation",
+        "label": "Automated Systems",
+        "title": "AI-Powered Pipeline & Operational Workflows",
+        "desc": "Eliminate friction points across your sales and logistics chains. We design custom automation pipelines that increase team output without expanding headcount.",
+        "checklist": [
+          "Automated lead qualification & routing",
+          "Supply chain visibility triggers",
+          "Reduced operational overhead by up to 35%"
+        ],
+        "iconName": "Zap",
+        "iconColorClass": "iconAmberLarge",
+        "visualLabel": "Seamless System Integration"
+      },
+      {
+        "id": "csuite",
+        "label": "C-Suite Alignment",
+        "title": "Executive Alignment & Governance",
+        "desc": "We work hand-in-hand with Founders, Boards, and C-Suite Leaders to align internal incentive structures and operational focus around key growth objectives.",
+        "checklist": [
+          "Board & Investor presentation frameworks",
+          "OKR and KPI cascade alignment",
+          "Executive coaching and leadership enablement"
+        ],
+        "iconName": "Compass",
+        "iconColorClass": "iconRoseLarge",
+        "visualLabel": "Strategic Vision to Execution"
+      }
+    ]
+  },
+  "roadmap": {
+    "section": {
+      "badge": "4-STEP PROCESS",
+      "title": "Roadmap to Market Dominance",
+      "description": "A structured, repeatable execution process that drives predictable growth."
+    },
+    "steps": [
+      {
+        "step": "01",
+        "title": "Diagnostic Audit",
+        "desc": "In-depth assessment of your sales funnels, unit economics, and operational bottlenecks."
+      },
+      {
+        "step": "02",
+        "title": "Strategy Blueprint",
+        "desc": "Custom expansion playbook with clear milestones, KPI assignments, and financial targets."
+      },
+      {
+        "step": "03",
+        "title": "Execution & Automation",
+        "desc": "Deploying automated sales workflows, team enablement, and CRM channel optimization."
+      },
+      {
+        "step": "04",
+        "title": "Scaling & Continuous ROI",
+        "desc": "Continuous performance tracking, expanding into secondary markets, and maximizing enterprise value."
+      }
+    ]
+  },
+  "roiCalculator": {
+    "section": {
+      "badge": "FINANCIAL SIMULATOR",
+      "title": "Interactive Growth & ROI Simulator",
+      "description": "Adjust your current baseline revenue to simulate projected growth multiples and efficiency gains delivered by Business Developer strategy.",
+      "baselineLabel": "Baseline Annual Revenue:",
+      "rangeLabels": ["$100,000", "$2,500,000", "$5,000,000+"],
+      "projectedLabel": "Projected 12-Mo Revenue",
+      "efficiencyLabel": "Operational Efficiency",
+      "efficiencySub": "Overhead Reduced",
+      "multipleLabel": "Target Growth Multiple",
+      "multipleSub": "Audited Portfolio Avg",
+      "cta": "Request Custom Financial Forecast"
+    },
+    "minRevenue": 100000,
+    "maxRevenue": 5000000,
+    "step": 50000,
+    "defaultRevenue": 750000,
+    "growthMultiple": 2.45
+  },
+  "ctaBanner": {
+    "title": "Ready to Accelerate Your Enterprise Growth?",
+    "description": "Connect with Business Developer experts today for a confidential, custom growth analysis tailored to your organization.",
+    "button": "Book Your Strategic Consultation"
+  },
+  "contactPage": {
+    "hero": {
+      "badge": "Direct Enterprise Consultation",
+      "title": "Connect with",
+      "titleHighlight": "Business Developer",
+      "description": "Schedule an executive discovery call with our principal strategists to evaluate scale opportunities and refine your unit economics.",
+      "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80",
+      "imageAlt": "Enterprise Advisory Team"
+    },
+    "form": {
+      "title": "Request Executive Advisory",
+      "description": "Complete the consultation brief below and a Senior Business Developer advisor will prepare a preliminary audit for your organization.",
+      "successTitle": "Advisory Request Submitted!",
+      "successMessage": "Thank you for reaching out. A Senior Growth Director has been assigned to review your inquiry and will reach out within 24 business hours.",
+      "submitAnother": "Submit Another Consultation Request",
+      "submitLabel": "Request Strategic Advisory Session",
+      "loadingLabel": "Processing Brief...",
+      "fields": {
+        "fullname": { "label": "Full Name", "placeholder": "e.g. Jonathan Vance" },
+        "phone": { "label": "Direct Phone", "placeholder": "+1 (555) 019-2834" },
+        "jobTitle": { "label": "Job Title", "placeholder": "e.g. Chief Revenue Officer" },
+        "email": { "label": "Corporate Email", "placeholder": "j.vance@enterprise.com" }
+      }
+    },
+    "modal": {
+      "badge": "STRATEGIC ADVISORY",
+      "title": "Book Executive Consultation",
+      "description": "Connect with Senior Business Developer directors to schedule your bespoke growth audit and advisory briefing.",
+      "successTitle": "Consultation Brief Received",
+      "successMessage": "Thank you! An executive partner will review your inquiry and contact you within 24 business hours to confirm your advisory call.",
+      "submitAnother": "Submit another request",
+      "closeLabel": "Close Window",
+      "submitLabel": "Confirm Strategic Consultation",
+      "loadingLabel": "Scheduling Consultation..."
+    }
+  },
+  "mobileMenu": {
+    "consultationCta": "Book Strategic Consultation"
+  }
+}

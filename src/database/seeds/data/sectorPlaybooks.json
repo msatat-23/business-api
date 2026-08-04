@@ -1,0 +1,87 @@
+[
+  {
+    "id": "sec-1",
+    "sector": "Fintech & Financial Capital",
+    "badge": "Capital Acceleration",
+    "title": "Automated Treasury & Cross-Border Liquidity Scaling",
+    "metric": "$120M+ Capital Orchestrated",
+    "impact": "3.2x Valuation Expansion in 12 Months",
+    "description": "Engineering resilient fintech infrastructure, cross-border payment gateways, and regulatory compliance frameworks to unlock rapid institutional capital rounds.",
+    "pillars": [
+      "Automated Risk & Liquidity Modeling",
+      "Cross-Border Regulatory Compliance Frameworks",
+      "API-First Core Banking Integrations"
+    ],
+    "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=85",
+    "iconName": "Landmark",
+    "accentColor": "#fb7185"
+  },
+  {
+    "id": "sec-2",
+    "sector": "Global Logistics & Supply Chain",
+    "badge": "Operational Velocity",
+    "title": "Predictive Freight Routing & Multi-Node Optimization",
+    "metric": "42% Latency Cut Across 14 Channels",
+    "impact": "$14.2M Annual Logistics Cost Reduced",
+    "description": "Transforming global distribution networks with automated route dispatching, real-time inventory visibility, and supplier risk hedging systems.",
+    "pillars": [
+      "AI-Powered Predictive Route Dispatching",
+      "Multi-Node Inventory Balancing Systems",
+      "Supplier Hedging & SLA Enforcement Protocol"
+    ],
+    "image": "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=85",
+    "iconName": "Truck",
+    "accentColor": "#c084fc"
+  },
+  {
+    "id": "sec-3",
+    "sector": "Enterprise AI & Cloud SaaS",
+    "badge": "Digital Scale",
+    "title": "High-Velocity SaaS Go-To-Market & ARR Pipeline Engine",
+    "metric": "99.98% Workflow Automation SLA",
+    "impact": "+210% ARR Net Retention Multiplier",
+    "description": "Structuring scalable subscription pricing models, automated lead scoring pipelines, and enterprise sales execution playbooks for high-growth tech.",
+    "pillars": [
+      "Automated Account-Based Lead Scoring",
+      "Usage-Based Pricing Elasticity Models",
+      "C-Suite Executive Sales Enablement Playbooks"
+    ],
+    "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=85",
+    "iconName": "Cpu",
+    "accentColor": "#38bdf8"
+  },
+  {
+    "id": "sec-4",
+    "sector": "Healthcare & MedTech Commercialization",
+    "badge": "Regulatory Mastery",
+    "title": "Clinical Commercialization & Provider Adoption Scaling",
+    "metric": "85 Regional Health Networks Expanded",
+    "impact": "100% HIPAA & Regulatory Audit Clearance",
+    "description": "Navigating complex clinical trial commercialization, hospital network procurement alignment, and scalable telemedicine infrastructure.",
+    "pillars": [
+      "Hospital Enterprise Procurement Alignment",
+      "HIPAA & FDA Regulatory Clearance Systems",
+      "Telemedicine Service Delivery Optimization"
+    ],
+    "image": "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200&q=85",
+    "iconName": "Stethoscope",
+    "accentColor": "#34d399"
+  },
+  {
+    "id": "sec-5",
+    "sector": "Omnichannel Retail & E-Commerce",
+    "badge": "Direct-to-Consumer Growth",
+    "title": "Multi-Store Location & Customer LTV Optimization",
+    "metric": "4.8x LTV / CAC Unit Economics Multiplier",
+    "impact": "45 New Storefront Hubs Scaled Seamlessly",
+    "description": "Unifying online store analytics with physical storefront expansions using location intelligence and automated customer retention loops.",
+    "pillars": [
+      "Location Feasibility & Demographics Modeling",
+      "Unified Cross-Channel Inventory Sync",
+      "Automated Customer Retention Loops"
+    ],
+    "image": "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=1200&q=85",
+    "iconName": "ShoppingBag",
+    "accentColor": "#f59e0b"
+  }
+]

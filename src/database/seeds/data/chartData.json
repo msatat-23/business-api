@@ -1,0 +1,10 @@
+{
+  "chartDataMap": {
+    "Q1": { "val": "$3.2M", "trend": "+8.2%", "pointX": 40, "pointY": 110, "label": "Q1 Launch Baseline" },
+    "Q2": { "val": "$5.8M", "trend": "+14.1%", "pointX": 130, "pointY": 90, "label": "Q2 Channel Expansion" },
+    "Q3": { "val": "$8.5M", "trend": "+21.0%", "pointX": 220, "pointY": 65, "label": "Q3 Operational Scaling" },
+    "Q4": { "val": "$11.9M", "trend": "+24.5%", "pointX": 310, "pointY": 40, "label": "Q4 Milestone Expansion" },
+    "Q5": { "val": "$14.8M", "trend": "+280% Target", "pointX": 400, "pointY": 15, "label": "Q5 Projected Horizon" }
+  },
+  "chartQuarters": ["Q1", "Q2", "Q3", "Q4", "Q5"]
+}
