@@ -11,52 +11,48 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid()) @db.Uuid
-  fullName  String   @db.VarChar(150)
-  email     String   @unique @db.VarChar(255)
-  password  String   @db.Text
-  role      String   @default("user") // "user" | "editor" | "admin"
-  isActive  Boolean  @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id        String     @id @default(uuid())
+  fullName  String
+  email     String     @unique
+  password  String
+  role      String     @default("user") // user, editor, admin
+  isActive  Boolean    @default(true)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  contacts  Contact[]
 
-  // Relations
-  contactsSubmitted Contact[] @relation("submittedBy")
-
-  @@index([email])
   @@map("users")
 }
 
 model HomePage {
-  id               Int       @id @default(1)
-  site             Json?
-  heroSection      Json?
-  heroDashboard    Json?
-  chartData        Json?
-  navigation       Json?
-  services         Json?
-  capabilities     Json?
-  methodology      Json?
-  roadmap          Json?
-  portfolio        Json?
-  sectorPlaybooks  Json?
-  updatedByEmail   String?   @db.VarChar(255)
-  updatedAt        DateTime  @updatedAt
+  id                Int       @id @default(1)
+  site              Json?
+  heroSection       Json?
+  heroDashboard     Json?
+  chartData         Json?
+  navigation        Json?
+  services          Json?
+  capabilities      Json?
+  methodology       Json?
+  roadmap           Json?
+  portfolio         Json?
+  sectorPlaybooks   Json?
+  updatedByEmail    String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
 
-  @@map("home_page")
+  @@map("home_pages")
 }
 
 model Contact {
-  id                String    @id @default(uuid()) @db.Uuid
-  fullName          String    @db.VarChar(150)
-  phone             String    @db.VarChar(30)
-  jobTitle          String    @db.VarChar(150)
-  email             String    @db.VarChar(255)
+  id               String    @id @default(uuid())
+  fullName         String    @db.VarChar(150)
+  phone            String    @db.VarChar(30)
+  jobTitle         String    @db.VarChar(150)
+  email            String    @db.VarChar(255)
   submittedByUserId String?   @db.Uuid
-  createdAt         DateTime  @default(now())
-
-  // Relations
-  submittedBy       User?     @relation("submittedBy", fields: [submittedByUserId], references: [id], onDelete: SetNull)
+  submittedByUser  User?     @relation(fields: [submittedByUserId], references: [id], onDelete: SetNull)
+  createdAt        DateTime  @default(now())
 
   @@map("contacts")
 }

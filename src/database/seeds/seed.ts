@@ -4,6 +4,7 @@ import * as bcrypt from 'bcrypt';
 import * as fs from 'fs';
 import * as path from 'path';
 import { PrismaClient } from '@prisma/client';
+import { Role } from '../../common/enums/role.enum';
 
 dotenv.config();
 
@@ -30,17 +31,17 @@ async function seedHomePage() {
   const sectorPlaybooks = readJson('sectorPlaybooks.json');
 
   let home = await prisma.homePage.findUnique({
-    where: { id: 1 },
+    where: { id: SINGLETON_ID },
   });
 
   if (!home) {
     home = await prisma.homePage.create({
-      data: { id: 1 },
+      data: { id: SINGLETON_ID },
     });
   }
 
   await prisma.homePage.update({
-    where: { id: 1 },
+    where: { id: SINGLETON_ID },
     data: {
       site,
       heroSection,
@@ -57,8 +58,10 @@ async function seedHomePage() {
     },
   });
 
-  console.log('Home page content seeded from /database/seeds/data/*.json');
+  console.log('✅ Home page content seeded from /database/seeds/data/*.json');
 }
+
+const SINGLETON_ID = 1;
 
 async function seedAdmin() {
   const email = (process.env.SEED_ADMIN_EMAIL || 'admin@business-dev.com').toLowerCase();
@@ -70,7 +73,7 @@ async function seedAdmin() {
   });
 
   if (existing) {
-    console.log(`Admin user already exists (${email}) - skipping.`);
+    console.log(`ℹ️  Admin user already exists (${email}) - skipping.`);
     return;
   }
 
@@ -80,23 +83,23 @@ async function seedAdmin() {
       fullName,
       email,
       password: hashedPassword,
-      role: 'admin',
+      role: Role.ADMIN,
       isActive: true,
     },
   });
 
-  console.log(`Bootstrap admin created: ${email} (change the password after first login!)`);
+  console.log(`✅ Bootstrap admin created: ${email} (change the password after first login!)`);
 }
 
 async function run() {
-  console.log('Connected to Postgres for seeding...');
+  console.log('📡 Connected to Postgres for seeding...');
 
   try {
     await seedHomePage();
     await seedAdmin();
-    console.log('Seeding complete.');
+    console.log('🎉 Seeding complete.');
   } catch (error) {
-    console.error('Seeding failed:', error);
+    console.error('❌ Seeding failed:', error);
     process.exitCode = 1;
   } finally {
     await prisma.$disconnect();
