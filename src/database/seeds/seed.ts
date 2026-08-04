@@ -3,14 +3,11 @@ import * as dotenv from 'dotenv';
 import * as bcrypt from 'bcrypt';
 import * as fs from 'fs';
 import * as path from 'path';
-import { DataSource } from 'typeorm';
-import { typeOrmDataSourceOptions } from '../../config/typeorm.config';
-import { HomePage } from '../../modules/home/entities/home-page.entity';
-import { User } from '../../modules/users/entities/user.entity';
-import { Role } from '../../common/enums/role.enum';
+import { PrismaClient } from '@prisma/client';
 
 dotenv.config();
 
+const prisma = new PrismaClient();
 const DATA_DIR = path.join(__dirname, 'data');
 
 function readJson<T = any>(fileName: string): T {
@@ -19,9 +16,7 @@ function readJson<T = any>(fileName: string): T {
   return JSON.parse(raw);
 }
 
-async function seedHomePage(dataSource: DataSource) {
-  const repo = dataSource.getRepository(HomePage);
-
+async function seedHomePage() {
   const site = readJson('site.json');
   const heroSection = readJson('heroSection.json');
   const heroDashboard = readJson('heroDashboard.json');
@@ -34,70 +29,77 @@ async function seedHomePage(dataSource: DataSource) {
   const portfolio = readJson('portfolio.json');
   const sectorPlaybooks = readJson('sectorPlaybooks.json');
 
-  let home = await repo.findOne({ where: { id: 1 } });
-  if (!home) {
-    home = repo.create({ id: 1 });
-  }
-
-  Object.assign(home, {
-    site,
-    heroSection,
-    heroDashboard,
-    chartData,
-    navigation,
-    services,
-    capabilities,
-    methodology,
-    roadmap,
-    portfolio,
-    sectorPlaybooks,
-    updatedByEmail: 'seed-script',
+  let home = await prisma.homePage.findUnique({
+    where: { id: 1 },
   });
 
-  await repo.save(home);
+  if (!home) {
+    home = await prisma.homePage.create({
+      data: { id: 1 },
+    });
+  }
+
+  await prisma.homePage.update({
+    where: { id: 1 },
+    data: {
+      site,
+      heroSection,
+      heroDashboard,
+      chartData,
+      navigation,
+      services,
+      capabilities,
+      methodology,
+      roadmap,
+      portfolio,
+      sectorPlaybooks,
+      updatedByEmail: 'seed-script',
+    },
+  });
+
   console.log('✅ Home page content seeded from /database/seeds/data/*.json');
 }
 
-async function seedAdmin(dataSource: DataSource) {
-  const repo = dataSource.getRepository(User);
-
+async function seedAdmin() {
   const email = (process.env.SEED_ADMIN_EMAIL || 'admin@business-dev.com').toLowerCase();
   const password = process.env.SEED_ADMIN_PASSWORD || 'ChangeMe123!';
   const fullName = process.env.SEED_ADMIN_FULLNAME || 'Super Admin';
 
-  const existing = await repo.findOne({ where: { email } });
+  const existing = await prisma.user.findUnique({
+    where: { email },
+  });
+
   if (existing) {
     console.log(`ℹ️  Admin user already exists (${email}) - skipping.`);
     return;
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
-  const admin = repo.create({
-    fullName,
-    email,
-    password: hashedPassword,
-    role: Role.ADMIN,
-    isActive: true,
+  await prisma.user.create({
+    data: {
+      fullName,
+      email,
+      password: hashedPassword,
+      role: 'admin',
+      isActive: true,
+    },
   });
 
-  await repo.save(admin);
   console.log(`✅ Bootstrap admin created: ${email} (change the password after first login!)`);
 }
 
 async function run() {
-  const dataSource = new DataSource(typeOrmDataSourceOptions);
-  await dataSource.initialize();
   console.log('📡 Connected to Postgres for seeding...');
 
   try {
-    await seedHomePage(dataSource);
-    await seedAdmin(dataSource);
+    await seedHomePage();
+    await seedAdmin();
     console.log('🎉 Seeding complete.');
   } catch (error) {
     console.error('❌ Seeding failed:', error);
     process.exitCode = 1;
   } finally {
-    await dataSource.destroy();
+    await prisma.$disconnect();
   }
 }
 
