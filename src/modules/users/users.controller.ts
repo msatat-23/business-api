@@ -16,6 +16,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { UpdateUserRoleDto } from './dto/update-user-role.dto';
 import { Roles } from '../../common/decorators/roles.decorator';
 import { Role } from '../../common/enums/role.enum';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
 /**
  * All routes here require a signed-in ADMIN (JwtAuthGuard is global,
@@ -23,11 +24,12 @@ import { Role } from '../../common/enums/role.enum';
  * Admin can: create users, list/read users, update user details,
  * update a user's role, and delete users.
  */
+@ApiBearerAuth('access-token')
 @Controller('users')
 @Roles(Role.ADMIN)
 @UseInterceptors(ClassSerializerInterceptor)
 export class UsersController {
-  constructor(private readonly usersService: UsersService) { }
+  constructor(private readonly usersService: UsersService) {}
 
   @Post()
   create(@Body() dto: CreateUserDto) {
@@ -50,10 +52,7 @@ export class UsersController {
   }
 
   @Patch(':id/role')
-  updateRole(
-    @Param('id', ParseUUIDPipe) id: string,
-    @Body() dto: UpdateUserRoleDto,
-  ) {
+  updateRole(@Param('id', ParseUUIDPipe) id: string, @Body() dto: UpdateUserRoleDto) {
     return this.usersService.updateRole(id, dto);
   }
 

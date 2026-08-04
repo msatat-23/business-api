@@ -5,6 +5,7 @@ import { Public } from '../../common/decorators/public.decorator';
 import { Roles } from '../../common/decorators/roles.decorator';
 import { CurrentUser } from '../../common/decorators/current-user.decorator';
 import { Role } from '../../common/enums/role.enum';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
 @Controller('home')
 export class HomeController {
@@ -23,12 +24,10 @@ export class HomeController {
    * Editors and admins can update the home page entirely (or any subset
    * of sections - all fields in UpdateHomeDto are optional).
    */
+  @ApiBearerAuth('access-token')
   @Patch()
   @Roles(Role.EDITOR, Role.ADMIN)
-  updateHome(
-    @Body() dto: UpdateHomeDto,
-    @CurrentUser('email') email: string,
-  ) {
+  updateHome(@Body() dto: UpdateHomeDto, @CurrentUser('email') email: string) {
     return this.homeService.updateHome(dto, email);
   }
 }

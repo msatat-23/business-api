@@ -1,4 +1,5 @@
 import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
 import { Logger, ValidationPipe, VersioningType } from '@nestjs/common';
 import helmet from 'helmet';
@@ -43,6 +44,24 @@ async function bootstrap() {
 
   // --- Graceful shutdown ------------------------------------------------
   app.enableShutdownHooks();
+
+  // --- Swagger docs -----------------------------------------------------
+  const config = new DocumentBuilder()
+    .setTitle('API')
+    .setVersion('1.0')
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+      },
+      'access-token',
+    )
+    .build();
+
+  const document = SwaggerModule.createDocument(app, config);
+
+  SwaggerModule.setup('api', app, document);
 
   const port = configService.get<number>('port') ?? 3001;
   await app.listen(port);
