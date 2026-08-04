@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid()) @db.Uuid
+  fullName  String   @db.VarChar(150)
+  email     String   @unique @db.VarChar(255)
+  password  String   @db.Text
+  role      String   @default("user") // "user" | "editor" | "admin"
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  contactsSubmitted Contact[] @relation("submittedBy")
+
+  @@index([email])
+  @@map("users")
+}
+
+model HomePage {
+  id               Int       @id @default(1)
+  site             Json?
+  heroSection      Json?
+  heroDashboard    Json?
+  chartData        Json?
+  navigation       Json?
+  services         Json?
+  capabilities     Json?
+  methodology      Json?
+  roadmap          Json?
+  portfolio        Json?
+  sectorPlaybooks  Json?
+  updatedByEmail   String?   @db.VarChar(255)
+  updatedAt        DateTime  @updatedAt
+
+  @@map("home_page")
+}
+
+model Contact {
+  id                String    @id @default(uuid()) @db.Uuid
+  fullName          String    @db.VarChar(150)
+  phone             String    @db.VarChar(30)
+  jobTitle          String    @db.VarChar(150)
+  email             String    @db.VarChar(255)
+  submittedByUserId String?   @db.Uuid
+  createdAt         DateTime  @default(now())
+
+  // Relations
+  submittedBy       User?     @relation("submittedBy", fields: [submittedByUserId], references: [id], onDelete: SetNull)
+
+  @@map("contacts")
+}

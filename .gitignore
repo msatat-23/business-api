@@ -1,29 +1,17 @@
-# compiled output
-/dist
-/node_modules
-
-# logs
-logs
-*.log
-npm-debug.log*
-
-# env
 .env
+.env.local
 .env.*.local
-
-# OS
+node_modules/
+dist/
+.next/
+.cache/
+*.log
 .DS_Store
-
-# IDE
-.idea
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-# tests
-/coverage
-/.nyc_output
-
-tsconfig.tsbuildinfo
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+prisma/dev.db
+prisma/dev.db-journal
+.prisma/
