@@ -27,7 +27,7 @@ import { Role } from '../../common/enums/role.enum';
 @Roles(Role.ADMIN)
 @UseInterceptors(ClassSerializerInterceptor)
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UsersService) { }
 
   @Post()
   create(@Body() dto: CreateUserDto) {
