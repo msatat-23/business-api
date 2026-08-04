@@ -6,7 +6,10 @@ import { PrismaClient } from '@prisma/client';
  * Manages the Prisma Client connection lifecycle within NestJS
  */
 @Injectable()
-export class PrismaService extends PrismaClient implements OnModuleInit, OnModuleDestroy {
+export class PrismaService
+  extends PrismaClient
+  implements OnModuleInit, OnModuleDestroy
+{
   constructor() {
     super();
   }
