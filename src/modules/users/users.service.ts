@@ -4,6 +4,7 @@ import { PrismaService } from '../../config/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UpdateUserRoleDto } from './dto/update-user-role.dto';
+import { Role } from '../../common/enums/role.enum';
 
 const SALT_ROUNDS = 10;
 
@@ -11,7 +12,7 @@ const SALT_ROUNDS = 10;
 export class UsersService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(dto: CreateUserDto, role: string = 'user') {
+  async create(dto: CreateUserDto, role: Role = Role.USER) {
     const existing = await this.prisma.user.findUnique({
       where: { email: dto.email.toLowerCase() },
     });
@@ -68,7 +69,9 @@ export class UsersService {
     if (dto.email !== undefined) updateData.email = dto.email.toLowerCase();
     if (dto.fullName !== undefined) updateData.fullName = dto.fullName;
     if (dto.isActive !== undefined) updateData.isActive = dto.isActive;
-    if (dto.password) updateData.password = await bcrypt.hash(dto.password, SALT_ROUNDS);
+    if (dto.password) {
+      updateData.password = await bcrypt.hash(dto.password, SALT_ROUNDS);
+    }
 
     return this.prisma.user.update({
       where: { id },
