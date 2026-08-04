@@ -1,0 +1,13 @@
+{
+  "eyebrow": "ENTERPRISE BUSINESS DEVELOPMENT PLATFORM",
+  "title": "Architecting High-Growth Business Strategies",
+  "highlight": "High-Growth",
+  "description": "We partner with ambitious executives and high-growth companies to unlock new market share, optimize operational margins, and automate revenue execution.",
+  "primaryCta": { "label": "Schedule Strategic Audit", "href": "/contact" },
+  "secondaryCta": { "label": "Explore Core Offerings", "scrollTo": "services-section" },
+  "badges": [
+    { "label": "SOC2 Certified Strategy", "color": "#fb7185" },
+    { "label": "98.4% Client Retention SLA", "color": "#34d399" },
+    { "label": "ISO 9001 Compliant", "color": "#a855f7" }
+  ]
+}

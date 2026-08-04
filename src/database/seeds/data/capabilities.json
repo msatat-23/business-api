@@ -1,0 +1,58 @@
+[
+  {
+    "id": "1",
+    "badge": "EXPANSION ENGINE",
+    "title": "Cross-Border Market Acceleration",
+    "description": "De-risk international scaling with automated multi-jurisdictional compliance models, local trade channels, and strategic distributor alignment.",
+    "metric": "14 Months",
+    "metricLabel": "Average Global Launch Velocity",
+    "keyHighlights": [
+      "Multi-Currency Financial Architecture",
+      "Local Regulatory Approval Roadmaps",
+      "Tier-1 Regional Vendor Network Access"
+    ],
+    "image": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "id": "2",
+    "badge": "FINANCIAL INTELLIGENCE",
+    "title": "Predictive Revenue & EBITDA Modeling",
+    "description": "Deploy advanced unit economic stress tests and capital efficiency matrices to identify hidden revenue leaks and maximize valuation multiples.",
+    "metric": "3.8x",
+    "metricLabel": "Average Enterprise Valuation Expansion",
+    "keyHighlights": [
+      "3-Year Capital Allocation Projection",
+      "Dynamic Pricing Elasticity Benchmarks",
+      "Real-Time Margin Optimization Dashboard"
+    ],
+    "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "id": "3",
+    "badge": "M&A EXECUTION",
+    "title": "Strategic Mergers & Asset Acquisition",
+    "description": "Comprehensive buy-side and sell-side transaction advisory, valuation auditing, and seamless post-merger operational integration.",
+    "metric": "$140M+",
+    "metricLabel": "Capital Synergies Realized",
+    "keyHighlights": [
+      "Commercial & Operational Due Diligence",
+      "Synergy Capture & Integration Timelines",
+      "Board & Shareholder Alignment Protocols"
+    ],
+    "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "id": "4",
+    "badge": "GOVERNANCE & SCALE",
+    "title": "Enterprise Risk & Governance Frameworks",
+    "description": "Establish robust C-Suite oversight, operational SLA guarantees, and risk mitigation protocols designed for institutional investment standards.",
+    "metric": "99.4%",
+    "metricLabel": "SLA Audit Guarantee Compliance",
+    "keyHighlights": [
+      "Board-Level Performance Analytics",
+      "Institutional Risk Mitigation Controls",
+      "Executive Leadership Succession Models"
+    ],
+    "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=85"
+  }
+]

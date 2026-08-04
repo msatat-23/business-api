@@ -1,0 +1,14 @@
+{
+  "aiLabel": "AI Revenue Predictor Active",
+  "headerTitle": "Enterprise Growth Analytics — Business Developer",
+  "cards": [
+    { "id": "annual", "label": "Annual Revenue Velocity", "usesChart": true },
+    { "id": "ebitda", "label": "EBITDA Margin Boost", "value": "34.2%", "trend": "+6.8% YoY" },
+    { "id": "pipeline", "label": "Pipeline Efficiency", "value": "94.1%", "trend": "Optimal" }
+  ],
+  "chart": {
+    "label": "12-Month Projected vs Actual Growth Line",
+    "target": "Target ROI: 2.45x",
+    "footerLabels": ["Q1 Baseline", "Q2 Ramp", "Q3 Multiplier", "Q4 Peak", "Q5 Horizon"]
+  }
+}
