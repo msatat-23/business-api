@@ -1,12 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import configuration from './config/configuration';
-import { User } from './modules/users/entities/user.entity';
-import { HomePage } from './modules/home/entities/home-page.entity';
-import { Contact } from './modules/contact/entities/contact.entity';
+import { PrismaService } from './config/prisma.service';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { HomeModule } from './modules/home/home.module';
@@ -22,22 +19,6 @@ import { AppController } from './app.controller';
     ConfigModule.forRoot({
       isGlobal: true,
       load: [configuration],
-    }),
-
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
-        host: configService.get<string>('database.host'),
-        port: configService.get<number>('database.port'),
-        username: configService.get<string>('database.username'),
-        password: configService.get<string>('database.password'),
-        database: configService.get<string>('database.database'),
-        entities: [User, HomePage, Contact],
-        synchronize: configService.get<boolean>('database.synchronize'),
-        logging: configService.get<boolean>('database.logging'),
-      }),
     }),
 
     ThrottlerModule.forRootAsync({
@@ -60,6 +41,7 @@ import { AppController } from './app.controller';
   ],
   controllers: [AppController],
   providers: [
+    PrismaService,
     // Global rate limiting
     { provide: APP_GUARD, useClass: ThrottlerGuard },
     // Global auth: every route requires a valid JWT unless annotated @Public()
