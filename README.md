@@ -1,106 +1,119 @@
-# Marketplace Backend (NestJS + TypeScript + PostgreSQL)
+# Business API - NestJS + Prisma + PostgreSQL
 
-Backend API for the Business Developer marketplace app. Built to pair with
-the existing Next.js frontend (`nextjs-business`), replacing its static
-`/data/*.json` files with a real, role-protected API backed by PostgreSQL.
+A modern, production-ready NestJS backend API for a business marketplace platform with role-based access control, home page CMS, and contact form management.
 
-## Stack
+## Features
 
-- **NestJS 10** (TypeScript)
-- **PostgreSQL** via **TypeORM**
-- **JWT auth** via `@nestjs/passport` + `passport-jwt`
-- **class-validator / class-transformer** for DTO validation
-- **Helmet** for security headers, **CORS** restricted to configured origins
-- **@nestjs/throttler** for basic rate limiting
-- **bcrypt** for password hashing
+- **Authentication & Authorization**
+  - JWT-based authentication
+  - Role-based access control (User, Editor, Admin)
+  - Secure password hashing with bcrypt
 
-## Data model — 3 tables
+- **Database**
+  - PostgreSQL with Prisma ORM
+  - Type-safe database operations
+  - Automated migrations
 
-| Table       | Purpose                                                                 |
-|-------------|--------------------------------------------------------------------------|
-| `users`     | `user`, `editor`, `admin` roles                                         |
-| `home_page` | Singleton row (`id = 1`) holding every section of the home page as JSONB |
-| `contacts`  | Contact form submissions (Fullname, Phone, Jobtitle, Email)             |
+- **Modules**
+  - Auth: User registration and login
+  - Users: User management (admin only)
+  - Home: Singleton CMS for homepage content
+  - Contact: Public contact form with admin inbox
 
-### Permissions
+- **Security**
+  - Helmet for security headers
+  - CORS configuration
+  - Rate limiting with `@nestjs/throttler`
+  - Input validation with class-validator
+  - Password exclusion from API responses
 
-| Action                              | Anonymous | user | editor | admin |
-|--------------------------------------|:---------:|:----:|:------:|:-----:|
-| `GET /home` (read home page)         | ✅        | ✅   | ✅     | ✅    |
-| `PATCH /home` (edit home page)       | ❌        | ❌   | ✅     | ✅    |
-| `POST /contact` (submit contact form)| ✅        | ✅   | ✅     | ✅    |
-| `GET /contact` (list submissions)    | ❌        | ❌   | ❌     | ✅    |
-| `GET/POST/PATCH/DELETE /users/*`     | ❌        | ❌   | ❌     | ✅    |
-| `POST /auth/register`                | ✅ (creates a `user`) | — | — | — |
-| `POST /auth/login`                   | ✅        | ✅   | ✅     | ✅    |
+- **Code Quality**
+  - TypeScript strict mode
+  - ESLint + Prettier for code formatting
+  - Consistent error handling
+  - Structured logging
 
-All routes require a valid JWT **by default**; only routes explicitly
-marked `@Public()` (register, login, `GET /home`, `POST /contact`) skip
-authentication. This is enforced globally in `AppModule` (secure-by-default).
-
-> Note: only admins can create `editor`/`admin` accounts (via `POST /users`).
-> Public self sign-up (`POST /auth/register`) always creates a plain `user`.
-> Reading contact submissions is restricted to admins (not specified in the
-> original brief but a sensible default — change this in
-> `contact.controller.ts` if you want editors to see leads too).
-
-## Getting started
-
-### 1. Prerequisites
+## Prerequisites
 
 - Node.js 18+
-- A running PostgreSQL instance (local, Docker, or managed)
+- npm or yarn
+- PostgreSQL 12+
 
-### 2. Install dependencies
+## Installation
+
+1. **Clone the repository**
+
+```bash
+git clone <repository-url>
+cd business-api
+```
+
+2. **Install dependencies**
 
 ```bash
 npm install
 ```
 
-### 3. Configure environment
+3. **Set up environment variables**
 
-```bash
-cp .env.example .env
+Create a `.env` file in the root directory:
+
+```env
+# Database
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/marketplace_db"
+
+# JWT
+JWT_SECRET="your-super-secret-jwt-key-change-in-production"
+JWT_EXPIRES_IN="1d"
+
+# Server
+PORT=3001
+NODE_ENV=development
+CORS_ORIGINS="http://localhost:3000,http://localhost:3001"
+
+# Seed
+SEED_ADMIN_EMAIL="admin@business-dev.com"
+SEED_ADMIN_PASSWORD="ChangeMe123!"
+SEED_ADMIN_FULLNAME="Super Admin"
+
+# Throttling
+THROTTLE_TTL=60000
+THROTTLE_LIMIT=100
 ```
 
-Edit `.env` and set your PostgreSQL credentials, `JWT_SECRET`, allowed
-`CORS_ORIGINS` (your Next.js app URL), and the bootstrap admin
-credentials (`SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD`).
-
-### 4. Create the database
+4. **Run database migrations**
 
 ```bash
-createdb marketplace_db
-# or, in psql:
-# CREATE DATABASE marketplace_db;
+npm run prisma:migrate "init"
 ```
 
-### 5. Run migrations (creates the 3 tables)
+5. **Generate Prisma Client**
 
 ```bash
-npm run migration:run
+npm run prisma:generate
 ```
 
-### 6. Seed the data
-
-Loads the original `/data/*.json` content into `home_page` and creates the
-bootstrap admin account:
+6. **Seed the database (optional)**
 
 ```bash
 npm run seed
 ```
 
-### 7. Start the API
+This will create a bootstrap admin user and populate home page content from seed data.
+
+7. **Start development server**
 
 ```bash
 npm run start:dev
 ```
 
-The API is served at `http://localhost:3001/api/v1`.
-Health check: `GET http://localhost:3001/api/v1/health` (not versioned data,
-just liveness).
+Server will run at `http://localhost:3001`
 
-## API reference
+## API Documentation
+
+Health check: `GET http://localhost:3001/api/v1/health` (not versioned data, just liveness).
+
+## API Reference
 
 Base URL: `/api/v1`
 
@@ -132,14 +145,14 @@ Send the token on protected requests: `Authorization: Bearer <accessToken>`
 - `PATCH /users/:id/role` — `{ role: "user" | "editor" | "admin" }`
 - `DELETE /users/:id`
 
-## Project structure
+## Project Structure
 
 ```
 src/
   common/            guards, decorators, filters, interceptors, enums
-  config/            env config loader + TypeORM DataSource
+  config/            configuration + Prisma service
   database/
-    migrations/      SQL migrations (source of truth for schema)
+    migrations/      Prisma migrations (auto-generated)
     seeds/           seed.ts + copied data/*.json from the Next.js app
   modules/
     auth/            register/login, JWT strategy
@@ -149,33 +162,135 @@ src/
   app.module.ts
   app.controller.ts  health check
   main.ts            bootstrap: helmet, cors, validation, prefix/versioning
+
+prisma/
+  schema.prisma      Prisma schema definition
 ```
 
-## Security & best practices baked in
+## Security & Best Practices
 
-- Passwords hashed with bcrypt (never returned in API responses — `password`
-  is excluded via `class-transformer`'s `@Exclude`).
+- Passwords hashed with bcrypt (never returned in API responses — `password` is excluded via `class-transformer`'s `@Exclude`).
 - JWT auth required globally by default (`JwtAuthGuard` + `@Public()` opt-out).
 - Role-based access control via `@Roles()` + `RolesGuard`.
-- `ValidationPipe` with `whitelist`/`forbidNonWhitelisted` — rejects any
-  unexpected payload fields.
+- `ValidationPipe` with `whitelist`/`forbidNonWhitelisted` — rejects any unexpected payload fields.
 - Helmet security headers + configurable CORS allow-list.
 - Basic rate limiting via `@nestjs/throttler`.
-- Schema managed through versioned TypeORM migrations
-  (`DB_SYNCHRONIZE=false` by default — never auto-sync in production).
-- Consistent success/error response envelopes (`TransformInterceptor`,
-  `HttpExceptionFilter`).
+- Schema managed through Prisma migrations (declarative, type-safe).
+- Consistent success/error response envelopes (`TransformInterceptor`, `HttpExceptionFilter`).
 
-## Useful scripts
+## Useful Scripts
 
 ```bash
+# Development
 npm run start:dev         # watch mode
-npm run build              # compile to dist/
-npm run start:prod         # run compiled app
-npm run seed                # load data/*.json + bootstrap admin
-npm run migration:generate  # generate a new migration from entity changes
-npm run migration:run       # apply pending migrations
-npm run migration:revert    # roll back the last migration
-npm run lint
+npm run start:debug       # debug mode
+
+# Building
+npm run build             # compile to dist/
+npm run start:prod        # run compiled app
+
+# Database
+npm run seed              # load data/*.json + bootstrap admin
+npm run prisma:migrate    # create new migration from schema changes
+npm run prisma:migrate:prod # deploy migrations in production
+npm run prisma:generate   # regenerate Prisma Client
+npm run prisma:studio     # open Prisma Studio to view/edit data
+npm run prisma:format     # format Prisma schema
+
+# Code Quality
+npm run lint              # run ESLint with auto-fix
+npm run format            # format code with Prettier
 ```
-"# business-api" 
+
+## Environment Variables
+
+| Variable | Description | Default |
+| --- | --- | --- |
+| `DATABASE_URL` | PostgreSQL connection string | `postgresql://postgres:postgres@localhost:5432/marketplace_db` |
+| `JWT_SECRET` | Secret key for JWT signing | `dev-secret-change-me` |
+| `JWT_EXPIRES_IN` | JWT expiration time | `1d` |
+| `PORT` | Server port | `3001` |
+| `NODE_ENV` | Environment (development/production) | `development` |
+| `CORS_ORIGINS` | Comma-separated CORS allow-list | `http://localhost:3000` |
+| `SEED_ADMIN_EMAIL` | Bootstrap admin email | `admin@business-dev.com` |
+| `SEED_ADMIN_PASSWORD` | Bootstrap admin password | `ChangeMe123!` |
+| `SEED_ADMIN_FULLNAME` | Bootstrap admin full name | `Super Admin` |
+| `THROTTLE_TTL` | Rate limit time window (ms) | `60000` |
+| `THROTTLE_LIMIT` | Max requests per time window | `100` |
+
+## Development Workflow
+
+1. **Make schema changes** in `prisma/schema.prisma`
+2. **Create migration**:
+   ```bash
+   npm run prisma:migrate "describe-your-change"
+   ```
+3. **Review migration** in `prisma/migrations/`
+4. **Generate types**:
+   ```bash
+   npm run prisma:generate
+   ```
+5. **Update services** to use new types
+6. **Test locally**:
+   ```bash
+   npm run start:dev
+   ```
+
+## Deployment
+
+### Production Checklist
+
+- [ ] Update `.env` with production database URL
+- [ ] Set strong `JWT_SECRET`
+- [ ] Update `CORS_ORIGINS` to match your frontend domain
+- [ ] Set `NODE_ENV=production`
+- [ ] Build application: `npm run build`
+- [ ] Deploy migrations: `npm run prisma:migrate:prod`
+- [ ] Start server: `npm run start:prod`
+
+### Deployment with Docker
+
+```dockerfile
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci --only=production
+
+COPY . .
+RUN npm run build
+RUN npm run prisma:generate
+
+EXPOSE 3001
+
+CMD ["npm", "run", "start:prod"]
+```
+
+## Troubleshooting
+
+### "DATABASE_URL is not set"
+- Ensure `.env` file exists with `DATABASE_URL` variable
+- Format: `postgresql://user:password@host:port/database`
+
+### "Cannot find Prisma Client"
+- Run `npm run prisma:generate` to regenerate
+
+### Migration errors
+- Check PostgreSQL is running
+- Verify connection string is correct
+- Ensure database exists
+
+### Port already in use
+- Change `PORT` in `.env` or use: `PORT=3002 npm run start:dev`
+
+## Contributing
+
+1. Create a feature branch from `develop`
+2. Make your changes
+3. Run `npm run lint` and `npm run format`
+4. Create a pull request
+
+## License
+
+UNLICENSED
