@@ -1,7 +1,8 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsEnum, IsNotEmpty } from 'class-validator';
+import { ContactStatus } from '../../../common/enums/contact-status.enum';
 
 export class UpdateContactStatusDto {
   @IsNotEmpty()
-  @IsString()
-  contactStatus: string;
+  @IsEnum(ContactStatus)
+  contactStatus: ContactStatus;
 }

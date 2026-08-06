@@ -13,6 +13,16 @@ import { Role } from '../../common/enums/role.enum';
 
 const SALT_ROUNDS = 10;
 
+const SAFE_USER_SELECT = {
+  id: true,
+  fullName: true,
+  email: true,
+  role: true,
+  isActive: true,
+  createdAt: true,
+  updatedAt: true,
+} satisfies Prisma.UserSelect;
+
 @Injectable()
 export class UsersService {
   constructor(private readonly prisma: PrismaService) {}
@@ -35,6 +45,7 @@ export class UsersService {
         password: hashedPassword,
         role: dto.role ?? role,
       },
+      select: SAFE_USER_SELECT,
     });
   }
 
@@ -71,6 +82,7 @@ export class UsersService {
           orderBy,
           skip,
           take: pageSize,
+          select: SAFE_USER_SELECT,
         }),
         this.prisma.user.count({ where }),
       ]);
@@ -86,12 +98,13 @@ export class UsersService {
       };
     }
 
-    return this.prisma.user.findMany({ where, orderBy });
+    return this.prisma.user.findMany({ where, orderBy, select: SAFE_USER_SELECT });
   }
 
   async findOne(id: string) {
     const user = await this.prisma.user.findUnique({
       where: { id },
+      select: SAFE_USER_SELECT,
     });
     if (!user) {
       throw new NotFoundException(`User with id "${id}" not found`);
@@ -126,6 +139,7 @@ export class UsersService {
     return this.prisma.user.update({
       where: { id },
       data: updateData,
+      select: SAFE_USER_SELECT,
     });
   }
 
@@ -133,6 +147,7 @@ export class UsersService {
     return this.prisma.user.update({
       where: { id },
       data: { role: dto.role },
+      select: SAFE_USER_SELECT,
     });
   }
 
@@ -140,6 +155,7 @@ export class UsersService {
     await this.findOne(id);
     return this.prisma.user.delete({
       where: { id },
+      select: SAFE_USER_SELECT,
     });
   }
 }
