@@ -8,11 +8,13 @@ import {
   ParseUUIDPipe,
   Patch,
   Post,
+  Query,
   UseInterceptors,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { FindUsersQueryDto } from './dto/find-users-query.dto';
 import { UpdateUserRoleDto } from './dto/update-user-role.dto';
 import { Roles } from '../../common/decorators/roles.decorator';
 import { Role } from '../../common/enums/role.enum';
@@ -37,8 +39,8 @@ export class UsersController {
   }
 
   @Get()
-  findAll() {
-    return this.usersService.findAll();
+  findAll(@Query() query: FindUsersQueryDto) {
+    return this.usersService.findAll(query);
   }
 
   @Get(':id')

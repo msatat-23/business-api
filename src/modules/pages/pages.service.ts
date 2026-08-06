@@ -7,6 +7,11 @@ import { UpdatePageDto } from './dto/update-page.dto';
 export class PagesService {
   constructor(private readonly prisma: PrismaService) {}
 
+  async getPages() {
+    const pages = await this.prisma.page.findMany();
+    return pages;
+  }
+
   async getPage(slug: string) {
     const page = await this.prisma.page.findUnique({
       where: { slug },

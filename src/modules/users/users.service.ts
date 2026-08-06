@@ -1,7 +1,12 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
+import { USERS_PAGE_SIZE } from '../../common/constants/pagination.constants';
+import { UserRoleFilter } from '../../common/enums/user-role-filter.enum';
+import { UserStatusFilter } from '../../common/enums/user-status-filter.enum';
 import { PrismaService } from '../../config/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
+import { FindUsersQueryDto } from './dto/find-users-query.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UpdateUserRoleDto } from './dto/update-user-role.dto';
 import { Role } from '../../common/enums/role.enum';
@@ -33,10 +38,55 @@ export class UsersService {
     });
   }
 
-  findAll() {
-    return this.prisma.user.findMany({
-      orderBy: { createdAt: 'desc' },
-    });
+  async findAll(query: FindUsersQueryDto = {}) {
+    const where: Prisma.UserWhereInput = {};
+
+    if (query.status === UserStatusFilter.ACTIVE) {
+      where.isActive = true;
+    } else if (query.status === UserStatusFilter.INACTIVE) {
+      where.isActive = false;
+    }
+
+    if (query.role && query.role !== UserRoleFilter.ALL) {
+      where.role = query.role;
+    }
+
+    if (query.search?.trim()) {
+      const search = query.search.trim();
+      where.OR = [
+        { fullName: { contains: search, mode: 'insensitive' } },
+        { email: { contains: search, mode: 'insensitive' } },
+      ];
+    }
+
+    const orderBy = { createdAt: 'desc' as const };
+
+    if (query.page !== undefined) {
+      const pageSize = query.pageSize ?? USERS_PAGE_SIZE;
+      const skip = (query.page - 1) * pageSize;
+
+      const [items, total] = await Promise.all([
+        this.prisma.user.findMany({
+          where,
+          orderBy,
+          skip,
+          take: pageSize,
+        }),
+        this.prisma.user.count({ where }),
+      ]);
+
+      return {
+        items,
+        meta: {
+          total,
+          page: query.page,
+          pageCount: Math.ceil(total / pageSize),
+          pageSize,
+        },
+      };
+    }
+
+    return this.prisma.user.findMany({ where, orderBy });
   }
 
   async findOne(id: string) {

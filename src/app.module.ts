@@ -8,6 +8,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { PagesModule } from './modules/pages/pages.module';
 import { ContactModule } from './modules/contact/contact.module';
+import { AdminModule } from './modules/admin/admin.module';
 import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
 import { RolesGuard } from './common/guards/roles.guard';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
@@ -38,6 +39,7 @@ import { AppController } from './app.controller';
     UsersModule,
     PagesModule,
     ContactModule,
+    AdminModule,
   ],
   controllers: [AppController],
   providers: [

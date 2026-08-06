@@ -1,4 +1,14 @@
-import { Body, Controller, Get, Param, ParseUUIDPipe, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  ParseUUIDPipe,
+  Patch,
+  Post,
+  Query,
+  UseGuards,
+} from '@nestjs/common';
 import { ContactService } from './contact.service';
 import { CreateContactDto } from './dto/create-contact.dto';
 import { Public } from '../../common/decorators/public.decorator';
@@ -7,6 +17,8 @@ import { CurrentUser } from '../../common/decorators/current-user.decorator';
 import { OptionalJwtAuthGuard } from '../../common/guards/optional-jwt-auth.guard';
 import { Role } from '../../common/enums/role.enum';
 import { ApiBearerAuth } from '@nestjs/swagger';
+import { FindContactsQueryDto } from './dto/find-contacts-query.dto';
+import { UpdateContactStatusDto } from './dto/update-contact-status.dto';
 
 @Controller('contact')
 export class ContactController {
@@ -31,13 +43,19 @@ export class ContactController {
   @ApiBearerAuth('access-token')
   @Get()
   @Roles(Role.ADMIN, Role.EDITOR)
-  findAll() {
-    return this.contactService.findAll();
+  findAll(@Query() query: FindContactsQueryDto) {
+    return this.contactService.findAll(query);
   }
   @ApiBearerAuth('access-token')
   @Get(':id')
   @Roles(Role.ADMIN, Role.EDITOR)
   findOne(@Param('id', ParseUUIDPipe) id: string) {
     return this.contactService.findOne(id);
+  }
+  @ApiBearerAuth('access-token')
+  @Patch(':id/status')
+  @Roles(Role.ADMIN, Role.EDITOR)
+  updateContactStatus(@Param('id', ParseUUIDPipe) id: string, @Body() dto: UpdateContactStatusDto) {
+    return this.contactService.updateContactStatus(id, dto);
   }
 }

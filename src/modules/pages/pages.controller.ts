@@ -14,6 +14,13 @@ export class PagesController {
   /**
    * Everyone can read a page payload by slug - signed in or not.
    */
+
+  @ApiBearerAuth('access-token')
+  @Get('')
+  getPages() {
+    return this.pagesService.getPages();
+  }
+
   @Public()
   @Get(':slug')
   getPage(@Param('slug') slug: string) {

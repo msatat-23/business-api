@@ -42,6 +42,7 @@ model Contact {
   jobTitle          String   @db.VarChar(150)
   email             String   @db.VarChar(255)
   submittedByUserId String?  @db.Uuid
+  contactStatus     String   @default("new") //new,inprogress,resolved
   submittedByUser   User?    @relation(fields: [submittedByUserId], references: [id], onDelete: SetNull)
   createdAt         DateTime @default(now())
 
