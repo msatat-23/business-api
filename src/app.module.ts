@@ -14,6 +14,7 @@ import { RolesGuard } from './common/guards/roles.guard';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { TransformInterceptor } from './common/interceptors/transform.interceptor';
 import { AppController } from './app.controller';
+import { ContentsModule } from './modules/contents/contents.module';
 
 @Module({
   imports: [
@@ -38,21 +39,21 @@ import { AppController } from './app.controller';
     AuthModule,
     UsersModule,
     PagesModule,
+    ContentsModule,
     ContactModule,
     AdminModule,
   ],
+
   controllers: [AppController],
+
   providers: [
     PrismaService,
-    // Global rate limiting
+
     { provide: APP_GUARD, useClass: ThrottlerGuard },
-    // Global auth: every route requires a valid JWT unless annotated @Public()
     { provide: APP_GUARD, useClass: JwtAuthGuard },
-    // Global RBAC: enforces @Roles() metadata once authenticated
     { provide: APP_GUARD, useClass: RolesGuard },
-    // Consistent error shape
+
     { provide: APP_FILTER, useClass: HttpExceptionFilter },
-    // Consistent success envelope
     { provide: APP_INTERCEPTOR, useClass: TransformInterceptor },
   ],
 })

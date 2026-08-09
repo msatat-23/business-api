@@ -35,6 +35,17 @@ model Page {
   @@map("pages")
 }
 
+model Content {
+  id             Int      @id @default(autoincrement())
+  slug           String   @unique
+  content        Json     @default("{}")
+  updatedByEmail String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@map("contents")
+}
+
 model Contact {
   id                String   @id @default(uuid()) @db.Uuid
   fullName          String   @db.VarChar(150)
