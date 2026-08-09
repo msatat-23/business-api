@@ -11,17 +11,32 @@ datasource db {
 }
 
 model User {
-  id        String    @id @default(uuid()) @db.Uuid
-  fullName  String
-  email     String    @unique
-  password  String
-  role      String    @default("user") // user, editor, admin
-  isActive  Boolean   @default(true)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  contacts  Contact[]
+  id            String         @id @default(uuid()) @db.Uuid
+  fullName      String
+  email         String         @unique
+  password      String
+  role          String         @default("user") // user, editor, admin
+  isActive      Boolean        @default(true)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  contacts      Contact[]
+  refreshTokens RefreshToken[]
 
   @@map("users")
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid()) @db.Uuid
+  token     String   @unique
+  userId    String   @db.Uuid
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  revokedAt DateTime?
+
+  @@index([userId])
+  @@index([token])
+  @@map("refresh_tokens")
 }
 
 model Page {
